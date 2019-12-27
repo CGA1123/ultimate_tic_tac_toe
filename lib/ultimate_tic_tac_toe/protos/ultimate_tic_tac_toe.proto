@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package ultimate_tic_tac_toe.protos;
+
+service PlayerService {
+  rpc Play(Game) returns (Move) {}
+}
+
+enum State {
+  RUNNING = 0;
+  WIN_O = 1;
+  WIN_X = 2;
+  DRAW = 3;
+}
+
+enum Player {
+  PLAYER_X = 0;
+  PLAYER_O = 1;
+}
+
+enum Cell {
+  CELL_X = 0;
+  CELL_O = 1;
+  EMPTY = 2;
+}
+
+message Game {
+  repeated Move available_moves = 1;
+  repeated Board game = 2;
+  State state = 3;
+  Player player = 4;
+}
+
+message Move {
+  int32 big_index = 1;
+  int32 small_index = 2;
+}
+
+message Board {
+  repeated Cell cells = 1;
+  State state = 2;
+}
