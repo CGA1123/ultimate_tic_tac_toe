@@ -16,6 +16,8 @@ module UltimateTicTacToe
       [2, 4, 6],
     ]
 
+    attr_reader :board
+
     def initialize(board = EMPTY_BOARD)
       @board = board
     end
