@@ -65,9 +65,6 @@ module UltimateTicTacToe
           .compact
     end
 
-    def to_proto
-    end
-
     private
 
     def calculate_state
