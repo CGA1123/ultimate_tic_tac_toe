@@ -9,6 +9,7 @@ module UltimateTicTacToe
   autoload :GreedyPlayer, "ultimate_tic_tac_toe/greedy_player"
   autoload :RandomPlayer, "ultimate_tic_tac_toe/random_player"
   autoload :GrpcPlayer, "ultimate_tic_tac_toe/grpc_player"
+  autoload :MctsPlayer, "ultimate_tic_tac_toe/mcts_player"
   autoload :Protos, "ultimate_tic_tac_toe/protos/ultimate_tic_tac_toe_pb"
   autoload :Servers, "ultimate_tic_tac_toe/servers"
 

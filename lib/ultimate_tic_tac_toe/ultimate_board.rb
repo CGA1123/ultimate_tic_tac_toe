@@ -31,7 +31,10 @@ module UltimateTicTacToe
     end
 
     def state
-      @state ||= calculate_state
+      return :win if winner
+      return :draw if available_moves.empty?
+
+      :running
     end
 
     def running?
@@ -70,15 +73,6 @@ module UltimateTicTacToe
           .available_moves
           .map { |x| [@last_move, x] }
       end
-    end
-
-    private
-
-    def calculate_state
-      return :win if winner
-      return :draw if available_moves.empty?
-
-      :running
     end
   end
 end
