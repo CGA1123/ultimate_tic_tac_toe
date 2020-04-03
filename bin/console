@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+lib = File.expand_path("../lib", __dir__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require "bundler/setup"
+require "tic_tac_toe"
+
+# You can add fixtures and/or initialization code here to make experimenting
+# with your gem easier. You can also use a different console, if you like.
+
+require "pry"
+
+Pry.start
