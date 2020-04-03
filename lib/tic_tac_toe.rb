@@ -1,4 +1,10 @@
 class TicTacToe
+  autoload :Printer, "tic_tac_toe/printer"
+  autoload :Game, "tic_tac_toe/game"
+  autoload :RandomPlayer, "tic_tac_toe/random_player"
+  autoload :ConsolePlayer, "tic_tac_toe/console_player"
+  autoload :MonteCarloPlayer, "tic_tac_toe/monte_carlo_player"
+
   BadMove = Class.new(StandardError)
 
   STATES = [
@@ -72,12 +78,12 @@ class TicTacToe
       end
   end
 
-  private
+  def running?
+    state == STATE_RUNNING
+  end
 
-  def ensure_valid_move!(move)
-    return if available_moves.include?(move)
-
-    raise BadMove, "#{move} is not a valid move."
+  def draw?
+    state == STATE_DRAW
   end
 
   def win?
@@ -87,6 +93,20 @@ class TicTacToe
       WINS
         .map { |x, y, z| [@board[x], @board[y], @board[z]].uniq }
         .any? { |x| (x.size == 1) && x.first != EMPTY }
+  end
+
+  def winner
+    return unless win?
+
+    opposite_player
+  end
+
+  private
+
+  def ensure_valid_move!(move)
+    return if available_moves.include?(move)
+
+    raise BadMove, "#{move} is not a valid move."
   end
 
   def opposite_player
