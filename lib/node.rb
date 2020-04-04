@@ -45,7 +45,7 @@ class Node
     if current.draw?
       0
     else
-      current.winner == @state.player ? 1 : -1
+      current.winner == @state.player ? -1 : 1
     end
   end
 end
