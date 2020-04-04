@@ -50,17 +50,20 @@ class MonteCarloTreeSearch
     end
 
     def back_propagate(result, node)
-      return if node.nil?
+      current_node = node
+      current_result = result
 
-      node.visits += 1
+      while !current_node.nil?
+        current_node.visits += 1
 
-      case result
-      when 1 then node.wins += 1
-      when 0 then node.wins += 0.5
+        case current_result
+        when 1 then current_node.wins += 1
+        when 0 then current_node.wins += 0.5
+        end
+
+        current_result = current_result * -1
+        current_node = current_node.parent
       end
-
-      # -result to flip result each turn.
-      back_propagate(-result, node.parent)
     end
   end
 end
