@@ -3,6 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require "bundler/setup"
 require "tic_tac_toe"
+require "ultimate_tic_tac_toe"
 require "pry"
 
 RSpec.configure do |config|
