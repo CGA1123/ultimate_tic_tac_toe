@@ -3,7 +3,7 @@ class UltimateTicTacToe
   autoload :Game, "ultimate_tic_tac_toe/game"
   autoload :RandomPlayer, "ultimate_tic_tac_toe/random_player"
   # autoload :ConsolePlayer, "ultimate_tic_tac_toe/console_player"
-  # autoload :MonteCarloPlayer, "ultimate_tic_tac_toe/monte_carlo_player"
+  autoload :MonteCarloPlayer, "ultimate_tic_tac_toe/monte_carlo_player"
 
   BadMove = Class.new(StandardError)
 
