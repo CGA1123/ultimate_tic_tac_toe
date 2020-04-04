@@ -24,13 +24,13 @@ class Node
   end
 
   def all_children
-    @all_children ||= @state.available_moves.map do |transition|
+    @all_children ||= @state.available_moves.map { |transition|
       self.class.new(
         state: @state.play(transition),
         transition: transition,
         parent: self
       )
-    end
+    }
   end
 
   def simulate

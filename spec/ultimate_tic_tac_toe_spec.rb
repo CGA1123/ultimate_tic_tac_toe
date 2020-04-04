@@ -69,7 +69,6 @@ RSpec.describe UltimateTicTacToe do
         empty
       end
 
-
       it "returns all empty cells in local board with index 3" do
         expect(available_moves).to eq(expected_moves)
       end
@@ -154,7 +153,7 @@ RSpec.describe UltimateTicTacToe do
           board: [
             x, x, x,
             d, d, d,
-            e, e, e,
+            e, e, e
           ]
         )
       end
@@ -176,7 +175,7 @@ RSpec.describe UltimateTicTacToe do
           board: [
             x, o, x,
             d, o, d,
-            x, x, o,
+            x, x, o
           ]
         )
       end

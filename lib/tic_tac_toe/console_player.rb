@@ -7,14 +7,10 @@ class TicTacToe
       @printer = printer
     end
 
-    def name
-      "console"
-    end
-
     def play(board)
       @printer.print_board(board)
 
-      move = get_move(board)
+      get_move(board)
     end
 
     def get_move(board)

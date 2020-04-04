@@ -35,9 +35,9 @@ class TicTacToe
     def set_latest_node!(state)
       return if same_board?(@latest.state, state)
 
-      @latest = @latest.children.find(-> { raise "No latest found" }) do |child|
+      @latest = @latest.children.find(-> { raise "No latest found" }) { |child|
         same_board?(child.state, state)
-      end
+      }
     end
 
     def same_board?(a_game, b_game)

@@ -37,9 +37,9 @@ class UltimateTicTacToe
     def set_latest!(state)
       return if same_board?(@latest.state, state) && same_available_moves?(@latest.state, state)
 
-      @latest = @latest.children.find(-> { raise "No latest found" }) do |child|
+      @latest = @latest.children.find(-> { raise "No latest found" }) { |child|
         same_board?(child.state, state) && same_available_moves?(child.state, state)
-      end
+      }
     end
 
     def same_available_moves?(a, b)

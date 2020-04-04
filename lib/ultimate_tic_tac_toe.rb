@@ -56,8 +56,6 @@ class UltimateTicTacToe
     new_local_board_index =
       if new_board[local_index].is_a?(Array)
         local_index
-      else
-        nil
       end
 
     self.class.new(
@@ -123,12 +121,12 @@ class UltimateTicTacToe
     new_local_board = new_global_board[global_index].map(&:itself)
     new_local_board[local_index] = @player
 
-    if check_win?(new_local_board)
-      new_global_board[global_index] = @player
+    new_global_board[global_index] = if check_win?(new_local_board)
+      @player
     elsif new_local_board.none? { |x| x == EMPTY }
-      new_global_board[global_index] = EMPTY
+      EMPTY
     else
-      new_global_board[global_index] = new_local_board
+      new_local_board
     end
 
     new_global_board

@@ -11,7 +11,7 @@ class MonteCarloTreeSearch
       # each level, select the node with the highest UCT value.
       node_to_explore = node
 
-      while !node_to_explore.children.empty?
+      until node_to_explore.children.empty?
         node_to_explore =
           node_to_explore
             .children
@@ -53,7 +53,7 @@ class MonteCarloTreeSearch
       current_node = node
       current_result = result
 
-      while !current_node.nil?
+      until current_node.nil?
         current_node.visits += 1
 
         case current_result
@@ -61,7 +61,7 @@ class MonteCarloTreeSearch
         when 0 then current_node.wins += 0.5
         end
 
-        current_result = current_result * -1
+        current_result *= -1
         current_node = current_node.parent
       end
     end
