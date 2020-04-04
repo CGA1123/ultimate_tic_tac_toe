@@ -13,7 +13,8 @@ class TicTacToe
 
       @printer.print_board(@board)
 
-      @players.peek.name if @board.win?
+      @players.next
+      @players.next.name if @board.win?
     end
   end
 end
