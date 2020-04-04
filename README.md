@@ -1,11 +1,6 @@
-# UltimateTicTacToe
+# Monte-Carlo Tree Search for Tic-Tac-Toe and Ultimate Tic-Tac-Toe
 
-An Ultimate Tic-Tac-Toe server implementation. Players are expected to be implemented over gRPC, the protocol can be seen under `lib/protos`.
-
-## Usage
-
-- Implement a valid `UltimateTicTacToe::Protos::PlayerService::Service` (or in any other language gRPC supports!)
-- Start a game via `UltimateTicTacToe.build_grpc_game(player_one_address, player_two_address).play`
+TODO
 
 ## Contributing
 
