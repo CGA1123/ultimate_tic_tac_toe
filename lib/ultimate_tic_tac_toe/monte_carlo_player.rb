@@ -8,19 +8,49 @@ class UltimateTicTacToe
     end
 
     def play(state)
+      set_root!(state)
+      set_latest!(state)
+
+      @iterations.times { MonteCarloTreeSearch.step(@latest) }
+
+      @latest = MonteCarloTreeSearch.best(@latest)
+
+      raise "bad move" unless state.available_moves.include?(@latest.transition)
+
+      @latest.transition
+    end
+
+    private
+
+    def set_root!(state)
+      return @root if defined?(@root)
+
       @root = Node.new(
         state: state,
         transition: nil,
         parent: nil
       )
 
-      @iterations.times { MonteCarloTreeSearch.step(@root) }
+      @latest = @root
+    end
 
-      best = MonteCarloTreeSearch.best(@root)
+    def set_latest!(state)
+      return if same_board?(@latest.state, state) && same_available_moves?(@latest.state, state)
 
-      raise "bad_move" unless state.available_moves.include?(best.transition)
+      @latest = @latest.children.find(-> { raise "No latest found" }) do |child|
+        same_board?(child.state, state) && same_available_moves?(child.state, state)
+      end
+    end
 
-      best.transition
+    def same_available_moves?(a, b)
+      a.available_moves == b.available_moves
+    end
+
+    def same_board?(a_game, b_game)
+      a_game
+        .board
+        .zip(b_game.board)
+        .all? { |a, b| a == b }
     end
   end
 end
