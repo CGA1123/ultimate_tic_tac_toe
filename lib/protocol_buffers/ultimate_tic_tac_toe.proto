@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package protocol_buffers.ultimate_tic_tac_toe;
+
+service PlayerService {
+  rpc Play(Game) returns (Move) {}
+}
+
+enum Player {
+  EMPTY = 0;
+  X = 1;
+  O = 2;
+}
+
+message Board {
+  repeated Player cells = 1;
+}
+
+message Game {
+  Player player = 1;
+  repeated Board board = 2;
+  bool any_local_board = 3;
+  int32 local_board_index = 4;
+}
+
+message Move {
+  int32 global_index = 1;
+  int32 local_index = 2;
+}

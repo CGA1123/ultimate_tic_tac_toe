@@ -1,5 +1,6 @@
 module Services
   autoload :TicTacToe, "services/tic_tac_toe"
+  autoload :UltimateTicTacToe, "services/ultimate_tic_tac_toe"
 
   module_function
 
