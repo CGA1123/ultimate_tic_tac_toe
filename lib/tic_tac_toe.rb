@@ -34,15 +34,17 @@ class TicTacToe
   def self.empty_board
     new(
       board: Array.new(9) { EMPTY },
-      player: PLAYER_X
+      player: PLAYER_X,
+      history: []
     )
   end
 
-  attr_reader :board, :player
+  attr_reader :board, :player, :history
 
-  def initialize(board:, player:)
+  def initialize(board:, player:, history:)
     @board = board.map(&:freeze).freeze
     @player = player
+    @history = history
   end
 
   def available_moves
@@ -64,7 +66,8 @@ class TicTacToe
 
     self.class.new(
       board: new_board,
-      player: opposite_player
+      player: opposite_player,
+      history: history.dup.append(move)
     )
   end
 

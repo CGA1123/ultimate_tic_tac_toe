@@ -15,6 +15,10 @@ RSpec.describe TicTacToe do
     it "is player x's turn" do
       expect(empty_board.player).to eq(described_class::PLAYER_X)
     end
+
+    it "has an empty history" do
+      expect(empty_board.history).to be_empty
+    end
   end
 
   describe "#available_moves" do
@@ -86,6 +90,14 @@ RSpec.describe TicTacToe do
         expect { play }.not_to change(game, :player)
       end
 
+      it "does not change the history of the original game" do
+        expect { play }.not_to change(game, :history)
+      end
+
+      it "updates the history" do
+        expect(play.history).to eq([0])
+      end
+
       it "returns a board with move made" do
         expect(play.board).to eq(
           [
@@ -136,6 +148,10 @@ RSpec.describe TicTacToe do
           .play(1)
           .play(2)
           .play(4)
+      end
+
+      it "has set the history correctly (latest last)" do
+        expect(game.history).to eq([0, 1, 2, 4])
       end
 
       it "is running" do
