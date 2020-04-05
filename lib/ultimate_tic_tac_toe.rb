@@ -4,6 +4,7 @@ class UltimateTicTacToe
   autoload :RandomPlayer, "ultimate_tic_tac_toe/random_player"
   # autoload :ConsolePlayer, "ultimate_tic_tac_toe/console_player"
   autoload :MonteCarloPlayer, "ultimate_tic_tac_toe/monte_carlo_player"
+  autoload :GrpcPlayer, "ultimate_tic_tac_toe/grpc_player"
 
   BadMove = Class.new(StandardError)
 
