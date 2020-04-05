@@ -1,7 +1,9 @@
 #!/usr/bin/env ruby
 
 lib = File.expand_path("../lib", __dir__)
+protos = File.expand_path("../lib/protocol_buffers", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+$LOAD_PATH.unshift(protos) unless $LOAD_PATH.include?(protos)
 
 require "bundler/setup"
 require "node"
@@ -9,6 +11,7 @@ require "upper_confidence_bound"
 require "monte_carlo_tree_search"
 require "tic_tac_toe"
 require "ultimate_tic_tac_toe"
+require "protocol_buffers"
 require "pry"
 
 Pry.start
