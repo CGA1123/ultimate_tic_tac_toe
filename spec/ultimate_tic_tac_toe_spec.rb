@@ -19,6 +19,10 @@ RSpec.describe UltimateTicTacToe do
       )
     end
 
+    it "sets the history as empty" do
+      expect(empty_board.history).to be_empty
+    end
+
     it "sets the player as X" do
       expect(empty_board.player).to eq(described_class::PLAYER_X)
     end
@@ -78,6 +82,28 @@ RSpec.describe UltimateTicTacToe do
   describe "#play" do
     subject(:play) { board.play(move) }
 
+    context "after a couple of moves" do
+      let(:move) { [1, 2] }
+      let(:board) do
+        described_class
+          .empty_board
+          .play([0, 0])
+          .play([0, 1])
+          .play([1, 1])
+      end
+
+      it "has set the history correctly (latest last)" do
+        expect(play.history).to eq(
+          [
+            [0, 0],
+            [0, 1],
+            [1, 1],
+            [1, 2]
+          ]
+        )
+      end
+    end
+
     context "when move is legal" do
       let(:board) { described_class.empty_board }
       let(:move) { [0, 0] }
@@ -98,6 +124,10 @@ RSpec.describe UltimateTicTacToe do
         expect(play.player).to eq(described_class::PLAYER_O)
       end
 
+      it "sets the history correctly" do
+        expect(play.history).to eq([[0, 0]])
+      end
+
       it "set the board correctly" do
         empty_board = Array.new(9) { described_class::EMPTY }
         set_board = Array.new(9) { described_class::EMPTY }
@@ -116,6 +146,10 @@ RSpec.describe UltimateTicTacToe do
             empty_board
           ]
         )
+      end
+
+      it "does not change the current boards history" do
+        expect { play }.not_to change(board, :history)
       end
 
       it "does not change the current boards player" do
