@@ -12,6 +12,7 @@ require "monte_carlo_tree_search"
 require "tic_tac_toe"
 require "ultimate_tic_tac_toe"
 require "protocol_buffers"
+require "services"
 require "pry"
 
 Pry.start
