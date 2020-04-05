@@ -49,7 +49,7 @@ RSpec.describe UltimateTicTacToe do
 
     context "when local_board_index is set" do
       let(:empty_board) { Array.new(9) { Array.new(9) { described_class::EMPTY } } }
-      let(:board) { described_class.new(board: empty_board, player: described_class::PLAYER_X, local_board_index: 3) }
+      let(:board) { described_class.new(board: empty_board, player: described_class::PLAYER_X, local_board_index: 3, history: []) }
       let(:expected_moves) { (0..8).map { |index| [3, index] } }
 
       it "returns all empty cells in local board with index 3" do
@@ -58,7 +58,7 @@ RSpec.describe UltimateTicTacToe do
     end
 
     context "when some moves have been made" do
-      let(:board) { described_class.new(board: used_board, player: described_class::PLAYER_X, local_board_index: 3) }
+      let(:board) { described_class.new(board: used_board, player: described_class::PLAYER_X, local_board_index: 3, history: []) }
       let(:expected_moves) { [[3, 1], [3, 2], [3, 3], [3, 4], [3, 6], [3, 7], [3, 8]] }
       let(:used_board) do
         empty = Array.new(9) { Array.new(9) { described_class::EMPTY } }
@@ -150,6 +150,7 @@ RSpec.describe UltimateTicTacToe do
         described_class.new(
           player: o,
           local_board_index: 8,
+          history: [],
           board: [
             x, x, x,
             d, d, d,
@@ -172,6 +173,7 @@ RSpec.describe UltimateTicTacToe do
         described_class.new(
           player: o,
           local_board_index: 8,
+          history: [],
           board: [
             x, o, x,
             d, o, d,

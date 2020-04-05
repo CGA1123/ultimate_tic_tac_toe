@@ -35,16 +35,18 @@ class UltimateTicTacToe
     new(
       board: Array.new(9) { Array.new(9) { EMPTY } },
       player: PLAYER_X,
-      local_board_index: nil
+      local_board_index: nil,
+      history: []
     )
   end
 
-  attr_reader :board, :player, :local_board_index
+  attr_reader :board, :player, :local_board_index, :history
 
-  def initialize(board:, player:, local_board_index:)
+  def initialize(board:, player:, local_board_index:, history:)
     @board = board
     @player = player
     @local_board_index = local_board_index
+    @history = history
   end
 
   def play(move)
@@ -62,7 +64,8 @@ class UltimateTicTacToe
     self.class.new(
       player: opponent,
       local_board_index: new_local_board_index,
-      board: new_board
+      board: new_board,
+      history: history.dup.append(move)
     )
   end
 
