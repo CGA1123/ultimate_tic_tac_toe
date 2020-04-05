@@ -7,6 +7,6 @@ module Services
     s = GRPC::RpcServer.new
     s.add_http2_port("0.0.0.0:#{port}", :this_port_is_insecure)
     s.handle(handler)
-    s.run_till_terminated_or_interrupted([1, 'int', 'SIGQUIT'])
+    s.run_till_terminated_or_interrupted([1, "int", "SIGQUIT"])
   end
 end
