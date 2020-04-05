@@ -5,7 +5,8 @@ module Services
         def decode_game(game)
           ::TicTacToe.new(
             player: decode_player(game.player),
-            board: game.board.map { |cell| decode_player(cell) }
+            board: game.board.map { |cell| decode_player(cell) },
+            history: game.history.map { |move| move.index }
           )
         end
 

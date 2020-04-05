@@ -15,6 +15,7 @@ enum Player {
 message Game {
   Player player = 1;
   repeated Player board = 2;
+  repeated Move history = 3;
 }
 
 message Move {

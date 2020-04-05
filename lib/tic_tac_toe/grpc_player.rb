@@ -4,7 +4,8 @@ class TicTacToe
       def encode_game(game)
         ProtocolBuffers::TicTacToe::Game.new(
           player: encode_player(game.player),
-          board: game.board.map { |cell| encode_player(cell) }
+          board: game.board.map { |cell| encode_player(cell) },
+          history: game.history.map { |move| ProtocolBuffers::TicTacToe::Move.new(index: move) }
         )
       end
 
