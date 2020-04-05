@@ -14,7 +14,8 @@ module Services
           ::UltimateTicTacToe.new(
             player: decode_player(game.player),
             local_board_index: local_board_index,
-            board: game.board.map { |local_board| decode_board(local_board) }
+            board: game.board.map { |local_board| decode_board(local_board) },
+            history: game.history.map { |move| [move.global_index, move.local_index] }
           )
         end
 

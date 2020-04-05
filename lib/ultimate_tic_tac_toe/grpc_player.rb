@@ -6,7 +6,8 @@ class UltimateTicTacToe
           player: encode_player(game.player),
           board: game.board.map { |board| encode_board(board) },
           any_local_board: game.local_board_index.nil?,
-          local_board_index: game.local_board_index
+          local_board_index: game.local_board_index,
+          history: game.history.map { |g, l| ProtocolBuffers::UltimateTicTacToe::Move.new(global_index: g, local_index: l) }
         )
       end
 

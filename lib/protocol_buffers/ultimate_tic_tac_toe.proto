@@ -21,6 +21,7 @@ message Game {
   repeated Board board = 2;
   bool any_local_board = 3;
   int32 local_board_index = 4;
+  repeated Move history = 5;
 }
 
 message Move {
