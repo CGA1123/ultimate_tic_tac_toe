@@ -34,7 +34,7 @@ class UltimateTicTacToe
         [
           [" ", " ", " "],
           [" ", token(board), " "],
-          [" ", " ", " "],
+          [" ", " ", " "]
         ]
       end
     end

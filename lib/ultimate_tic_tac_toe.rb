@@ -10,7 +10,7 @@ class UltimateTicTacToe
   EMPTY = Object.new
   PLAYERS = [
     PLAYER_X = Object.new,
-    PLAYER_O = Object.new,
+    PLAYER_O = Object.new
   ]
 
   WINS = [
@@ -21,13 +21,13 @@ class UltimateTicTacToe
     [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
-    [2, 4, 6],
+    [2, 4, 6]
   ].map(&:freeze).freeze
 
   STATES = [
     STATE_WIN = Object.new,
     STATE_DRAW = Object.new,
-    STATE_RUNNING = Object.new,
+    STATE_RUNNING = Object.new
   ].freeze
 
   def self.empty_board
