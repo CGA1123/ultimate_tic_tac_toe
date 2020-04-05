@@ -1,4 +1,4 @@
-# Monte-Carlo Tree Search for Tic-Tac-Toe and Ultimate Tic-Tac-Toe
+# Tic-Tac-Toe and Ultimate Tic-Tac-Toe
 
 - `TicTacToe` implements a tic-tac-toe board
 - `UltimateTicTacToe` implements an ultimate tic-tac-toe board
