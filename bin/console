@@ -13,6 +13,7 @@ require "tic_tac_toe"
 require "ultimate_tic_tac_toe"
 require "protocol_buffers"
 require "services"
+require "full_tree_evaluation"
 require "pry"
 
 Pry.start
