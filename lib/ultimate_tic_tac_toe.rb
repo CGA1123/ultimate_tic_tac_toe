@@ -2,7 +2,7 @@ class UltimateTicTacToe
   autoload :Printer, "ultimate_tic_tac_toe/printer"
   autoload :Game, "ultimate_tic_tac_toe/game"
   autoload :RandomPlayer, "ultimate_tic_tac_toe/random_player"
-  # autoload :ConsolePlayer, "ultimate_tic_tac_toe/console_player"
+  autoload :ConsolePlayer, "ultimate_tic_tac_toe/console_player"
   autoload :MonteCarloPlayer, "ultimate_tic_tac_toe/monte_carlo_player"
   autoload :GrpcPlayer, "ultimate_tic_tac_toe/grpc_player"
 
@@ -11,7 +11,7 @@ class UltimateTicTacToe
   EMPTY = Object.new
   PLAYERS = [
     PLAYER_X = Object.new,
-    PLAYER_O = Object.new
+    PLAYER_O = Object.new,
   ]
 
   WINS = [
@@ -22,13 +22,13 @@ class UltimateTicTacToe
     [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
-    [2, 4, 6]
+    [2, 4, 6],
   ].map(&:freeze).freeze
 
   STATES = [
     STATE_WIN = Object.new,
     STATE_DRAW = Object.new,
-    STATE_RUNNING = Object.new
+    STATE_RUNNING = Object.new,
   ].freeze
 
   def self.empty_board

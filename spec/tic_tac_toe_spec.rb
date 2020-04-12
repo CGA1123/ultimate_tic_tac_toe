@@ -109,7 +109,7 @@ RSpec.describe TicTacToe do
             described_class::EMPTY,
             described_class::EMPTY,
             described_class::EMPTY,
-            described_class::EMPTY
+            described_class::EMPTY,
           ]
         )
       end

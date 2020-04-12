@@ -98,7 +98,7 @@ RSpec.describe UltimateTicTacToe do
             [0, 0],
             [0, 1],
             [1, 1],
-            [1, 2]
+            [1, 2],
           ]
         )
       end
@@ -143,7 +143,7 @@ RSpec.describe UltimateTicTacToe do
             empty_board,
             empty_board,
             empty_board,
-            empty_board
+            empty_board,
           ]
         )
       end
@@ -188,7 +188,7 @@ RSpec.describe UltimateTicTacToe do
           board: [
             x, x, x,
             d, d, d,
-            e, e, e
+            e, e, e,
           ]
         )
       end
@@ -211,7 +211,7 @@ RSpec.describe UltimateTicTacToe do
           board: [
             x, o, x,
             d, o, d,
-            x, x, o
+            x, x, o,
           ]
         )
       end
