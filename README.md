@@ -25,11 +25,44 @@ end
 
 ## gRPC
 
-TODO
+[gRPC](https://grpc.io/) support is implemented under the `Services` namespace
+and wrap an exiting player to work over gRPC. In order to play a game with a
+player over gRPC the `GrpcPlayer` class has been implemented.
+
+For example, you may start a `RandomPlayer` served over gRPC and play against it.
+
+In one process, run the `RandomPlayer` over gRPC:
+
+```ruby
+handler = TicTacToe::RandomPlayer.new               # The random player
+service = Services::TicTacToe::Player.new(handler)  # Wrapped as a gRPC service
+
+Services.start_service(service, 1123)               # Service on port 1123
+```
+
+And in another start the game:
+
+```ruby
+console_player = TicTacToe::ConsolePlayer.new
+grpc_player = TicTacToe::GrpcPlayer.new('0.0.0.0:1123')
+game = TicTacToe::Game.new(console_player, grpc_player)
+
+game.play
+```
+
+The same can be done for `UltimateTicTacToe` by replacing it for all references to `TicTacToe` (`s/TicTacToe/UltimateTicTacToe/g`).
 
 ## Monte-Carlo Tree Search
 
-TODO
+This project implements a `MonteCarloPlayer` for `TicTacToe` and `UltimateTicTacToe`, which uses [Monte-Carlo Tree Search](https://en.wikipedia.org/wiki/Monte_Carlo_tree_search) to select its moves.
+
+Monte-Carlo Tree Search is interesting because it doesn't require the implementation of any function to evaluate or score a game state directly, it instead uses random sampling to determine a score.
+
+That is to say that given a particular game state, random simulations are run from that state and the result of these are back-progated up the tree. Over enough iteration we start to build confidence in the win-rate of sub-trees and can make pretty good decisions on which moves are the most optimal.
+
+The implementation lives in the `MonteCarloTreeSearch` and `Node` classes.
+
+A `FullTreeEvaluation` class is also implemented which will attempt to do a depth-first traversal of the full game tree. It can compute (on my machine) a full tree for tic-tac-toe in ~10 seconds, I haven't managed to get it to complete for ultimate tic-tac-toe, which is why using Monte-Carlo Tree Search is much better :smile:.
 
 ## Contributing
 
@@ -37,4 +70,4 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/CGA112
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The code is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
