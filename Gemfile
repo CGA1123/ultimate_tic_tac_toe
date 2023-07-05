@@ -8,5 +8,5 @@ gem "pry"
 gem "pry-byebug"
 
 gem "google-protobuf", "~> 3.19"
-gem "grpc", "~> 1.28"
+gem "grpc", "~> 1.53"
 gem "grpc-tools", "~> 1.28"
